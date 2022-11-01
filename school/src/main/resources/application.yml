@@ -2,6 +2,11 @@ server:
   port: 8080
 
 spring:
+  thymeleaf:
+    check-template: true
+    check-template-location: true
+    enabled: true
+    suffix: .html
   application:
     name: school
   jpa:
