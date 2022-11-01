@@ -5,6 +5,9 @@ import br.com.application.school.model.enums.TeacherStats;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @AllArgsConstructor
@@ -15,7 +18,11 @@ public class TeacherDTO {
 
     @JsonIgnore
     private Long id;
+    @NotBlank
+    @NotNull
     private String name;
+    @NotNull
+    @DecimalMin("0.0")
     private BigDecimal salary;
     private TeacherStats status;
 
