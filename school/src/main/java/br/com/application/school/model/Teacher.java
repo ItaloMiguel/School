@@ -1,13 +1,13 @@
 package br.com.application.school.model;
 
 import br.com.application.school.model.enums.TeacherStats;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
@@ -20,14 +20,14 @@ public class Teacher implements Serializable {
     private Long id;
     @Column(nullable = false)
     private String name;
-    private Double salary;
+    private BigDecimal salary;
     @Enumerated(EnumType.STRING)
-    private TeacherStats stats;
+    private TeacherStats status;
 
-    public Teacher(String name, Double salary, TeacherStats stats) {
+    public Teacher(String name, BigDecimal salary, TeacherStats stats) {
         this.name = name;
         this.salary = salary;
-        this.stats = stats;
+        this.status = stats;
     }
 
     public Long getId() {
@@ -46,32 +46,20 @@ public class Teacher implements Serializable {
         this.name = name;
     }
 
-    public Double getSalary() {
+    public BigDecimal getSalary() {
         return salary;
     }
 
-    public void setSalary(Double salary) {
+    public void setSalary(BigDecimal salary) {
         this.salary = salary;
     }
 
-    public String getStats() {
-        return stats.toString();
+    public String getStatus() {
+        return status.toString();
     }
 
-    public void setStats(TeacherStats stats) {
-        this.stats = stats;
+    public void setStatus(TeacherStats status) {
+        this.status = status;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Teacher teacher = (Teacher) o;
-        return id != null && Objects.equals(id, teacher.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
 }
