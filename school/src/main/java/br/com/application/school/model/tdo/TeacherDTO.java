@@ -4,6 +4,7 @@ import br.com.application.school.model.Teacher;
 import br.com.application.school.model.enums.TeacherStats;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
