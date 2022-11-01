@@ -23,19 +23,13 @@ public class TeacherService {
         return teacherRepository.findAll().stream().map(this::toTeacherDTO).collect(Collectors.toList());
     }
 
-<<<<<<< HEAD
     public void saveNewTeacher(TeacherDTO teacherDTO) {
         Teacher teacher = teacherDTO.toTeacher();
         teacherRepository.save(teacher);
     }
 
     private TeacherDTO toTeacherDTO(Teacher teacher) {
-        TeacherDTO obj = modelMapper.map(teacher, TeacherDTO.class);
-        return obj;
-=======
-    private TeacherDTO toTeacherDTO(Teacher teacher) {
         TeacherDTO dto = modelMapper.map(teacher, TeacherDTO.class);
         return dto;
->>>>>>> origin/main
     }
 }

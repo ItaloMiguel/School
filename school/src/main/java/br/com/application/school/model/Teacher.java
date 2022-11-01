@@ -1,20 +1,13 @@
 package br.com.application.school.model;
 
 import br.com.application.school.model.enums.TeacherStats;
-<<<<<<< HEAD
-=======
-import lombok.AllArgsConstructor;
->>>>>>> origin/main
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.io.Serializable;
-<<<<<<< HEAD
 import java.math.BigDecimal;
-=======
->>>>>>> origin/main
 import java.util.Objects;
 
 @Entity
@@ -27,7 +20,6 @@ public class Teacher implements Serializable {
     private Long id;
     @Column(nullable = false)
     private String name;
-<<<<<<< HEAD
     private BigDecimal salary;
     @Enumerated(EnumType.STRING)
     private TeacherStats status;
@@ -36,16 +28,6 @@ public class Teacher implements Serializable {
         this.name = name;
         this.salary = salary;
         this.status = stats;
-=======
-    private Double salary;
-    @Enumerated(EnumType.STRING)
-    private TeacherStats stats;
-
-    public Teacher(String name, Double salary, TeacherStats stats) {
-        this.name = name;
-        this.salary = salary;
-        this.stats = stats;
->>>>>>> origin/main
     }
 
     public Long getId() {
@@ -64,7 +46,6 @@ public class Teacher implements Serializable {
         this.name = name;
     }
 
-<<<<<<< HEAD
     public BigDecimal getSalary() {
         return salary;
     }
@@ -81,21 +62,12 @@ public class Teacher implements Serializable {
         this.status = status;
     }
 
-=======
-    public Double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(Double salary) {
-        this.salary = salary;
-    }
-
     public String getStats() {
-        return stats.toString();
+        return status.toString();
     }
 
     public void setStats(TeacherStats stats) {
-        this.stats = stats;
+        this.status = stats;
     }
 
     @Override
@@ -110,5 +82,4 @@ public class Teacher implements Serializable {
     public int hashCode() {
         return getClass().hashCode();
     }
->>>>>>> origin/main
 }
