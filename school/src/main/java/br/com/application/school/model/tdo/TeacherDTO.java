@@ -1,5 +1,6 @@
 package br.com.application.school.model.tdo;
 
+<<<<<<< HEAD
 import br.com.application.school.model.Teacher;
 import br.com.application.school.model.enums.TeacherStats;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -54,4 +55,19 @@ public class TeacherDTO {
     public Teacher toTeacher() {
         return new Teacher(this.getName(), this.getSalary(), this.getStatus());
     }
+=======
+import br.com.application.school.model.enums.TeacherStats;
+import lombok.*;
+
+@Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
+public class TeacherDTO {
+
+    private Long id;
+    private String name;
+    private Double salary;
+    private TeacherStats stats;
+>>>>>>> origin/main
 }
