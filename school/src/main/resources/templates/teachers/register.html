@@ -4,10 +4,8 @@
 
 </head>
 <body>
+<header th:replace="fragment :: header('Register')"></header>
 <div class="container">
-    <div class="row">
-        <h1>New Teacher</h1>
-    </div>
     <div class="container">
         <div class="row">
             <form th:object="${teacherDTO}" action="/teachers" method="post">
@@ -29,7 +27,7 @@
                 </div>
                 <div class="container">
                     <button class="btn btn-outline-dark" type="submit">Submit</button>
-                    <button class="btn btn-outline-dark" type="button" th:onclick="'window.location.href=\'/\''">Return</button>
+                    <button class="btn btn-outline-dark" type="button" th:onclick="'window.location.href=\'/teachers\''">Return</button>
                 </div>
             </form>
         </div>
