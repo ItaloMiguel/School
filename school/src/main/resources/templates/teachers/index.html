@@ -1,5 +1,5 @@
-<!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<!doctype html SYSTEM "http://www.thymeleaf.org/dtd/xhtmls-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,8 +40,9 @@
             </table>
         </div>
     </div>
-    <div class="row">
-        <a href="/teachers/register">New Teacher</a>
+    <div class="container">
+        <button class="btn btn-outline-dark" type="submit" th:onclick="'window.location.href=\'/teachers/register\''">Register a new Teacher</button>
+        <button class="btn btn-outline-dark" type="button" th:onclick="'window.location.href=\'/\''">Home</button>
     </div>
 </div>
 
