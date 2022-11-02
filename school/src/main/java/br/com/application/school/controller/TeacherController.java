@@ -29,20 +29,21 @@ public class TeacherController {
     }
 
     @GetMapping("/teachers/register")
-    public ModelAndView newTeacher() {
+    public ModelAndView newTeacher(TeacherDTO dto) {
         ModelAndView mv = new ModelAndView("teachers/register");
         mv.addObject("teacherStatus", TeacherStats.values());
         return mv;
     }
 
     @PostMapping("/teachers")
-    public String create(@Valid TeacherDTO teacherDTO, BindingResult bindingResult) {
+    public ModelAndView create(@Valid TeacherDTO dto, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) {
-            System.out.println("\n *********************\n TEM ERROS \n*********************\n");
-            return "redirect:/teachers/register";
+            ModelAndView mv = new ModelAndView("teachers/register");
+            mv.addObject("teacherStatus", TeacherStats.values());
+            return mv;
         } else {
-            teacherService.saveNewTeacher(teacherDTO);
-            return "redirect:/teachers";
+            teacherService.saveNewTeacher(dto);
+            return new ModelAndView("redirect:/teachers");
         }
     }
 }
