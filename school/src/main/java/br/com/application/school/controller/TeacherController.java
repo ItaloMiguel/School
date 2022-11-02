@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class TeacherController {
@@ -41,8 +42,14 @@ public class TeacherController {
         return teacherService.verifyIfAllParametersWerePast(dto ,bindingResult);
     }
 
-//    @GetMapping("/teachers/{id}")
-//    public ModelAndView show(@PathVariable Long id) {
-//
-//    }
+    @GetMapping("/teachers/{id}")
+    public ModelAndView show(@PathVariable Long id) {
+        Optional<TeacherDTO> teacherDTO = teacherService.findById(id);
+        if(teacherDTO.isPresent()) {
+            TeacherDTO teacher = teacherDTO.get();
+            ModelAndView mv = new ModelAndView("/teachers/show");
+            return mv.addObject("teacher", teacher);
+        }
+        return new ModelAndView("redirect:/teachers");
+    }
 }

@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -32,8 +33,7 @@ public class TeacherService {
     }
 
     private TeacherDTO toTeacherDTO(Teacher teacher) {
-        TeacherDTO dto = modelMapper.map(teacher, TeacherDTO.class);
-        return dto;
+        return modelMapper.map(teacher, TeacherDTO.class);
     }
 
     public ModelAndView verifyIfAllParametersWerePast(TeacherDTO teacherDTO, BindingResult bindingResult) {
@@ -45,5 +45,10 @@ public class TeacherService {
             saveNewTeacher(teacherDTO);
             return new ModelAndView("redirect:/teachers");
         }
+    }
+
+    public Optional<TeacherDTO> findById(Long id) {
+        Optional<Teacher> teacher = teacherRepository.findById(id);
+        return teacher.map(this::toTeacherDTO);
     }
 }
