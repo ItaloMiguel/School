@@ -7,10 +7,7 @@ import br.com.application.school.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -74,7 +71,6 @@ public class TeacherController {
     public ModelAndView update(@PathVariable Long id, @Valid TeacherDTO teacherDTO, BindingResult bindingResult) {
         ModelAndView mv = new ModelAndView("/teachers/edit");
         if (bindingResult.hasErrors()) {
-            System.out.println("\n *** ERRO *** \n");
             mv.addObject("teacherStatus", TeacherStats.values());
             return mv;
         } else {
@@ -89,5 +85,10 @@ public class TeacherController {
         return mv;
     }
 
+    @GetMapping("/{id}/delete")
+    public ModelAndView delete(@PathVariable Long id) {
+        teacherService.deleteTeacher(id);
+        return new ModelAndView("redirect:/teachers");
+    }
 
 }

@@ -41,6 +41,7 @@ public class TeacherService {
     }
 
     public ModelAndView verifyIfAllParametersWerePast(TeacherDTO teacherDTO, BindingResult bindingResult) {
+        System.out.println(teacherDTO);
         if(bindingResult.hasErrors()) {
             ModelAndView mv = new ModelAndView("teachers/register");
             mv.addObject("teacherStatus", TeacherStats.values());
@@ -62,5 +63,9 @@ public class TeacherService {
 
     public Optional<Teacher> findByIdUpdate(Long id) {
         return teacherRepository.findById(id);
+    }
+
+    public void deleteTeacher(Long id) {
+        teacherRepository.deleteById(id);
     }
 }

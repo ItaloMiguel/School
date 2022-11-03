@@ -1,0 +1,26 @@
+<div class="container" th:fragment="form(teacherDTO, action)" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="row">
+        <form th:object="${teacherDTO}" th:action="${action}" method="post">
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input class="form-control" th:errorclass="is-invalid" type="text" th:field="*{name}">
+                <div class="invalid-feedback" th:errors="*{name}"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Salary</label>
+                <input class="form-control" th:errorclass="is-invalid" type="text" th:field="*{salary}">
+                <div class="invalid-feedback" th:errors="*{salary}"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-lobel">Stats</label>
+                <select class="form-select" th:field="*{status}">
+                    <option th:each="status : ${teacherStatus}" th:value="${status}" th:text="${status}"></option>
+                </select>
+            </div>
+            <div class="container">
+                <button class="btn btn-outline-dark" type="submit">Submit</button>
+                <button class="btn btn-outline-dark" type="button" th:onclick="'window.location.href=\'/teachers/\''">Return</button>
+            </div>
+        </form>
+    </div>
+</div>

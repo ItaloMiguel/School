@@ -59,7 +59,12 @@ public class TeacherDTO {
     }
 
     public Teacher toTeacher() {
-        return new Teacher(this.getName(), this.getSalary(), this.getStatus());
+        Teacher teacher = new Teacher();
+        teacher.setId(this.getId());
+        teacher.setName(this.getName());
+        teacher.setSalary(this.getSalary());
+        teacher.setStatus(this.getStatus());
+        return teacher;
     }
 
     public void fromTeacher(Teacher teacher) {
