@@ -5,6 +5,7 @@ import br.com.application.school.model.enums.TeacherStats;
 import br.com.application.school.model.tdo.TeacherDTO;
 import br.com.application.school.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -78,17 +79,29 @@ public class TeacherController {
             if (optional.isPresent()) {
                 Teacher teacher = teacherDTO.toTeacherUpdate(optional.get());
                 teacherService.save(teacher);
-                System.out.println(teacher);
-                return new ModelAndView("redirect:/teachers");
+                ModelAndView mvs = new ModelAndView("redirect:/teachers");
+                mv.addObject("message", "The " + teacher.getName() + " successfully created!");
+                mv.addObject("error", false);
+                return mvs;
             }
         }
+        mv.addObject("message", "The Teacher not created!");
+        mv.addObject("error", true);
         return mv;
     }
 
     @GetMapping("/{id}/delete")
     public ModelAndView delete(@PathVariable Long id) {
-        teacherService.deleteTeacher(id);
-        return new ModelAndView("redirect:/teachers");
+        ModelAndView mv = new ModelAndView("redirect:/teachers");
+        try {
+            teacherService.deleteTeacher(id);
+            mv.addObject("message", "The Teacher with id " + id + " successfully deleted!");
+            mv.addObject("error", false);
+        } catch (EmptyResultDataAccessException em) {
+            mv.addObject("message", "The Teacher with id " + id + " not found in bank of dice!");
+            mv.addObject("error", true);
+        }
+        return mv;
     }
 
 }

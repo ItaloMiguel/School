@@ -5,10 +5,19 @@
 </head>
 <body>
 <header th:replace="~{fragment :: header('Teacher List')}"></header>
+
+<div class="container mb-4">
+    <div class="col-12">
+        <span th:styleappend="${(param.error == null || param.message == null) ? 'display: none' : ''}"
+              th:classappend="${(param.error != null && param.error) ? 'error-message' : 'success-message'}"
+              th:text="${param.message != null ? param.message : ''}">Message</span>
+    </div>
+</div>
+
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <table class="table table-hover">
+            <table class="table table-condensed">
                 <thead>
                 <tr>
                     <td scope="col">NAME</td>
@@ -24,9 +33,15 @@
                     <td class="col-4" th:text="${teacher.name}">Name</td>
                     <td class="col-2" th:text="${teacher.salary}">Salary</td>
                     <td class="col-2" th:text="${teacher.status}">Status</td>
-                    <td class="col-1"><a th:href="@{/teachers/{teacherId}(teacherId = ${teacher.id})}">DETAILS</a></td>
-                    <td class="col-1"><a th:href="@{/teachers/{teacherId}/edit(teacherId = ${teacher.id})}">EDIT</a></td>
-                    <td class="col-1"><a th:href="@{/teachers/{teacherId}/delete(teacherId = ${teacher.id})}">DELETE</a></td>
+                    <td class="col-1 text-center">
+                        <a class="btn btn-outline-dark" th:href="@{/teachers/{teacherId}(teacherId = ${teacher.id})}">details</a>
+                    </td>
+                    <td class="col-1 text-center">
+                        <a class="btn btn-outline-dark" th:href="@{/teachers/{teacherId}/edit(teacherId = ${teacher.id})}">edit</a>
+                    </td>
+                    <td class="col-1 text-center">
+                        <a class="btn btn-outline-dark" th:href="@{/teachers/{teacherId}/delete(teacherId = ${teacher.id})}">delete</a>
+                    </td>
                 </tr>
                 </tbody>
             </table>
