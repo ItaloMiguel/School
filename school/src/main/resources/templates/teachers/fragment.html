@@ -12,7 +12,7 @@
                 <div class="invalid-feedback" th:errors="*{salary}"></div>
             </div>
             <div class="mb-3">
-                <label class="form-lobel">Stats</label>
+                <label class="form-label">Stats</label>
                 <select class="form-select" th:field="*{status}">
                     <option th:each="status : ${teacherStatus}" th:value="${status}" th:text="${status}"></option>
                 </select>
