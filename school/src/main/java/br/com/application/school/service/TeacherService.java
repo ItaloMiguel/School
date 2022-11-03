@@ -32,6 +32,10 @@ public class TeacherService {
         teacherRepository.save(teacher);
     }
 
+    public void save(Teacher teacher) {
+        teacherRepository.save(teacher);
+    }
+
     private TeacherDTO toTeacherDTO(Teacher teacher) {
         return modelMapper.map(teacher, TeacherDTO.class);
     }
@@ -50,5 +54,13 @@ public class TeacherService {
     public Optional<TeacherDTO> findById(Long id) {
         Optional<Teacher> teacher = teacherRepository.findById(id);
         return teacher.map(this::toTeacherDTO);
+    }
+
+    public Optional<Teacher> findByIdForEdit(Long id) {
+        return teacherRepository.findById(id);
+    }
+
+    public Optional<Teacher> findByIdUpdate(Long id) {
+        return teacherRepository.findById(id);
     }
 }

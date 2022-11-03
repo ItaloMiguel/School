@@ -1,6 +1,7 @@
 package br.com.application.school.model;
 
 import br.com.application.school.model.enums.TeacherStats;
+import br.com.application.school.model.tdo.TeacherDTO;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.Hibernate;
@@ -54,8 +55,8 @@ public class Teacher implements Serializable {
         this.salary = salary;
     }
 
-    public String getStatus() {
-        return status.toString();
+    public TeacherStats getStatus() {
+        return status;
     }
 
     public void setStatus(TeacherStats status) {
@@ -68,6 +69,10 @@ public class Teacher implements Serializable {
 
     public void setStats(TeacherStats stats) {
         this.status = stats;
+    }
+
+    public void toTeacherUpdate(TeacherDTO dto) {
+
     }
 
     @Override

@@ -4,7 +4,7 @@
 
 </head>
 <body>
-<header th:replace="fragment :: header('Teacher List')"></header>
+<header th:replace="~{fragment :: header('Teacher List')}"></header>
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -27,7 +27,7 @@
                     <td class="col-2" th:text="${teacher.salary}">Salary</td>
                     <td class="col-2" th:text="${teacher.status}">Status</td>
                     <td class="col-1"><a th:href="@{/teachers/{teacherId}(teacherId = ${teacher.id})}">DETAILS</a></td>
-                    <td class="col-1"><a href="#">EDIT</a></td>
+                    <td class="col-1"><a th:href="@{/teachers/{teacherId}/edit(teacherId = ${teacher.id})}">EDIT</a></td>
                     <td class="col-1"><a href="#">DELETE</a></td>
                 </tr>
                 </tbody>
