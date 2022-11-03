@@ -4,7 +4,6 @@ import br.com.application.school.model.Teacher;
 import br.com.application.school.model.enums.TeacherStats;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
@@ -61,5 +60,19 @@ public class TeacherDTO {
 
     public Teacher toTeacher() {
         return new Teacher(this.getName(), this.getSalary(), this.getStatus());
+    }
+
+    public void fromTeacher(Teacher teacher) {
+        this.name = teacher.getName();
+        this.salary = teacher.getSalary();
+        this.status = teacher.getStatus();
+    }
+
+
+    public Teacher toTeacherUpdate(Teacher teacher) {
+        teacher.setName(this.getName());
+        teacher.setSalary(this.getSalary());
+        teacher.setStatus(this.getStatus());
+        return teacher;
     }
 }

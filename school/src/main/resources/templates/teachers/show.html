@@ -1,0 +1,25 @@
+<!doctype html SYSTEM "http://www.thymeleaf.org/dtd/xhtmls-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment :: head('Teacher information')}">
+</head>
+<body>
+<header th:replace="fragment :: header('Teacher id ' + ${teacher.id})"></header>
+<main>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <b>Name: </b><span th:text="${teacher.name}"></span><br/>
+                <b>Salary: </b><span th:text="${teacher.salary}"></span><br/>
+                <b>Status: </b><span th:text="${teacher.status}"></span><br/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button class="btn btn-outline-dark" type="button">Edit</button>
+                <button class="btn btn-outline-dark" type="button" th:onclick="'window.location.href=\'/teachers\''">Return</button>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
