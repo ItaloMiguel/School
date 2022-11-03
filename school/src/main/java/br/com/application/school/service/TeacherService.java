@@ -64,4 +64,8 @@ public class TeacherService {
     public Optional<Teacher> findByIdUpdate(Long id) {
         return teacherRepository.findById(id);
     }
+
+    public void deleteTeacher(Long id) {
+        teacherRepository.deleteById(id);
+    }
 }

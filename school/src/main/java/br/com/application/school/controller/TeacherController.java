@@ -85,5 +85,10 @@ public class TeacherController {
         return mv;
     }
 
+    @GetMapping("/{id}/delete")
+    public ModelAndView delete(@PathVariable Long id) {
+        teacherService.deleteTeacher(id);
+        return new ModelAndView("redirect:/teachers");
+    }
 
 }
