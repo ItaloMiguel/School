@@ -4,6 +4,7 @@ import br.com.application.school.model.Teacher;
 import br.com.application.school.model.enums.TeacherStats;
 import br.com.application.school.model.tdo.TeacherDTO;
 import br.com.application.school.service.TeacherService;
+import br.com.application.school.service.impl.TeacherServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
