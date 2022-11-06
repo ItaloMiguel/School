@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragment :: head('Register')}"></head>
+<body>
+<header th:replace="fragment :: header('Register')"></header>
+<div class="container">
+    <form action="/students" method="post">
+        <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input class="form-control" type="text" name="username">
+            <div></div>
+        </div>
+        <div class="mb-3">
+
+        </div>
+        <button class="btn btn-outline-dark" type="submit">Submit</button>
+        <button class="btn btn-outline-dark" type="button" th:onclick="'window.location.href=\'/students/\''">Return</button>
+    </form>
+</div>
+</body>
+</html>

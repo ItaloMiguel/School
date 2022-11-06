@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragment :: head('Student List')}">
+<body>
+<header th:replace="~{fragment :: header('Student List')}"></header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-condensed">
+        <thead>
+        <tr>
+          <td scope="col">NAME</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="teacher : ${students}">
+          <td class="col-4" th:text="${students.name}">Username</td>
+          <td class="col-1 text-center">
+            <a class="btn btn-outline-dark" href="#">details</a>
+          </td>
+          <td class="col-1 text-center">
+            <a class="btn btn-outline-dark" href="#">edit</a>
+          </td>
+          <td class="col-1 text-center">
+            <a class="btn btn-outline-dark" href="#">delete</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="container">
+    <button class="btn btn-outline-dark" type="submit" th:onclick="'window.location.href=\'/students/register\''">Register a new Student</button>
+    <button class="btn btn-outline-dark" type="button" th:onclick="'window.location.href=\'/\''">Home</button>
+  </div>
+</div>
+</body>
+</html>

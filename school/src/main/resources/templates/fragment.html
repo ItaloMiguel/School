@@ -20,7 +20,19 @@
            href="/teachers">Teachers</a>
       </li>
       <li>
-        <a class="nav-link" href="#">Students</a>
+        <a class="nav-link"
+           th:classappend="${#httpServletRequest.getRequestURI().equals('/students') ? 'active' : ''}"
+           href="/students">Students</a>
+      </li>
+      <li>
+        <a class="nav-link"
+           th:classappend="${#httpServletRequest.getRequestURI().equals('/login') ? 'active' : ''}"
+           href="/login">Login</a>
+      </li>
+      <li>
+        <a class="nav-link"
+           th:classappend="${#httpServletRequest.getRequestURI().equals('/register') ? 'active' : ''}"
+           href="/register">Register</a>
       </li>
     </ul>
   </div>
